@@ -21,21 +21,7 @@ open class SecurityConfig(private val userDetailsService: UserDetailsService) {
     }
 
     @Bean
-    fun configure(auth: AuthenticationManagerBuilder) {
-        auth.userDetailsService(userDetailsService)
-            .passwordEncoder(passwordEncoder())
-    }
+    fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
 
-    @Bean
-    fun filterChain(http: HttpSecurity): SecurityFilterChain {
-        http.authorizeHttpRequests()
-            .requestMatchers("/api/users").hasRole("ADMIN")
-            .requestMatchers("/api/**").authenticated()
-            .and()
-            .formLogin()
-            .and()
-            .logout()
-            .logoutSuccessUrl("/")
-        return http.build()
     }
 }
