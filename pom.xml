@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.6</version>
+        <version>3.1.0-RC1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>se.arctic</groupId>
@@ -15,8 +15,7 @@
     <description>EAM</description>
     <properties>
         <java.version>17</java.version>
-        <kotlin.version>1.7.22</kotlin.version>
-        <spring-cloud-azure.version>5.0.0</spring-cloud-azure.version>
+        <kotlin.version>1.8.20</kotlin.version>
     </properties>
     <dependencies>
         <dependency>
@@ -29,6 +28,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-docker-compose</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-quartz</artifactId>
         </dependency>
         <dependency>
@@ -38,10 +41,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.azure.spring</groupId>
-            <artifactId>spring-cloud-azure-starter-active-directory</artifactId>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
@@ -59,10 +58,9 @@
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-core</artifactId>
         </dependency>
-
         <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -83,13 +81,6 @@
     </dependencies>
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>com.azure.spring</groupId>
-                <artifactId>spring-cloud-azure-dependencies</artifactId>
-                <version>${spring-cloud-azure.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -128,5 +119,26 @@
             </plugin>
         </plugins>
     </build>
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
 
 </project>

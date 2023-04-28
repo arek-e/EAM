@@ -5,11 +5,12 @@ import jakarta.persistence.*
 @Entity
 @Table(name = "roles")
 data class Role (
+    @Column(nullable = false, unique = true)
+    var name: String,
+    @ManyToMany(mappedBy = "roles")
+    var users: Set<User> = setOf()
+){
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
-    @Column(nullable = false, unique = true)
-    val name: String,
-    @ManyToMany(mappedBy = "roles")
-    val users: Set<User> = setOf()
-)
+    var id: Long? = null
+}
