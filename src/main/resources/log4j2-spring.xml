@@ -13,7 +13,7 @@
         <Logger name="se.lanex.eam.controller.HelloController" level="trace">
             <AppenderRef ref="File"/>
         </Logger>
-        <Root level="error">
+        <Root level="debug">
             <AppenderRef ref="STDOUT"/>
         </Root>
     </Loggers>
