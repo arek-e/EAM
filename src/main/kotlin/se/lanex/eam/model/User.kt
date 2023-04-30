@@ -27,12 +27,13 @@ data class User(
         joinColumns = [JoinColumn(name = "user_id")],
         inverseJoinColumns = [JoinColumn(name = "role_id")]
     )
-    val roles: Set<Role> = setOf()
+    val roles: MutableSet<Role> = mutableSetOf(Role(name = "USER"))
 )
 
 data class CreateUser(
     @field:Size(min=2, max=20)
     val username: String,
+    val password: String,
 )
 
 data class ViewUser(
